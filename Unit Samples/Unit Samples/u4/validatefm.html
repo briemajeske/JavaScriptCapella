@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <title>Validate This Form before Submission</title>
+      <style>
+          .error {color:#FF0000;}
+          label {display:block;
+                width:120px; 
+                float:left;}
+      </style>
+      <script src=js/validatefm.js></script>
+  </head>
+
+  <body>
+    <h2>A simple validation form</h2>  
+      <p>I look awkward though.  Can you beautify me with CSS?</p>
+      
+    <form name="vaform">
+      <div>
+        <label for="topics"> The Course:</label>
+  
+              <select id="topics">
+                  <option value="">Select a topic </option>
+                  <option value="HTML">HTML</option>
+                  <option value="CSS">CSS</option>
+                  <option value="JavaScript">JavaScript</option>
+              </select>
+         
+            <span class="error" id="ytopics"></span>
+         </div>
+          
+           
+        <div>
+            <label for="fname">First Name:</label>
+            <input type="text" name="fname" placeholder="Enter your first name">
+         
+            <span class="error" id="fname"></span>
+        </div>
+       <div>
+           <label for="fname">Last Name:</label>
+            <input type="text" name="lname" placeholder="Enter your last name">
+          
+            <span class="error" id="lname"></span>
+        </div>
+        <div>
+            <label for="emid">Email Address:</label>
+            <input type="text" name="emid" placeholder="Enter your email address">
+         
+            <span class="error" id="emid"></span>
+        </div>
+        <div>
+            <label for="issue">The Issue:</label>
+            <textarea cols="22" rows="5" name="issue" placeholder="How may we help you?."></textarea>
+        
+            <span class="error" id="fissue"></span>
+        </div>
+     
+        <input type="button" value="Submit" onclick="checkall()">
+      
+    </form>
+
+  </body>
+
+</html>
