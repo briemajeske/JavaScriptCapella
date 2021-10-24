@@ -7,6 +7,7 @@ function replaceContent() {
 	myRecipientName = document.getElementById("recipientNameInput").value;
 	myHostName = document.getElementById("hostNameInput").value;
 
+	//Logging out to the console to look at the variables
 	console.log('Variable myRecipientName: ' + myRecipientName);
 	console.log('Variable myHostName: ' + myHostName);
 
@@ -17,7 +18,6 @@ function replaceContent() {
 	document.getElementById("recipientNamePlaceholder").innerHTML = myRecipientName;
 	document.getElementById("hostNamePlaceholder").innerHTML = myHostName;
 
-return false;
 
 } 
 
