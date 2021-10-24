@@ -1,8 +1,6 @@
 var $ = function (id) { return document.getElementById(id); };
 
 var volunteerArray = [];
-//var volunteerArray = ['John Smith', 'Jane Willow', 'Randy Jack', 'Jen Stevens'];
-
 
 var displayVolunteers = function () {   
     // display the volunteers in the text area
@@ -39,20 +37,23 @@ var addVolunteer = function () {
 
 var deleteVolunteer = function () {
     // get the data from the form (hint: use the same format as from the add).
-    if(volunteerArray.length > 0) {
+    // remove the string from the array (hint, loop through the entire list, compare the string with the item in the array.
+    
+    // check if form is filled out
+    var isFormEmpty = ($("first_name").value === "" & $("last_name").value === "");
+    console.log("isFormEmpty", isFormEmpty);
+    // if form is filled out and the array has a volunteer in it, loop over the volunteers array 
+    // and find the index of the volunteer and splice it out of the array
+    if(volunteerArray.length > 0 & (isFormEmpty == false)) {
         var volunteerString = $("first_name").value + " " + $("last_name").value;
-        
         volunteerArray.forEach((v,i) => {
-            
+            // is the volunteer in the array? if so, remove it
            if(v.indexOf(volunteerString) > -1) {
                volunteerArray.splice(i, 1);
            }
         })
-
     }
-    // remove the string from the array (hint, loop through the entire list, compare the string with the item in the array.
-	
-   
+	   
 	 
     // display the volunteers and clear the add form
     displayVolunteers();
