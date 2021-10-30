@@ -22,7 +22,7 @@ input[type=submit] ,input[type=button]{
     border-radius: 4px;
     cursor: pointer;
 }
-input[type=submit]:hover ;input[type=button]:hover {
+input[type=submit]:hover input[type=button]:hover {
     background-color: #802F1E;
 }
 section {
@@ -139,4 +139,10 @@ div.gallery img {
 div.desc {
     padding: 15px;
     text-align: center;
+}
+
+/* banner images  */
+#bannerImage {
+    width: 300px;
+    height: 200px;
 }
