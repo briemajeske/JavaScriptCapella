@@ -1,7 +1,7 @@
 // declare variables
 // array of urls for images to preload
 var imagesArray = [];
-var imgUrls = ["images/firefighter.jpg","images/silhouette.jpg","images/work.jpg"];
+var imgUrls = ["images/banner1.jpg","images/banner2.jpg","images/banner3.jpg"];
 var index = 0; // index 
 // on window load loop over the imageUrls array and preload image then push 
 // each element into imagesArray
