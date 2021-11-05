@@ -4,6 +4,17 @@
 <head>
     <title>Invitation Page</title>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script src="js/validate.js"></script>
+
+    <style>
+        .error {
+            display: block; 
+            color: red; 
+            font-size: small; 
+            font-weight: bold;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -28,36 +39,46 @@
         </nav>
     </header>
     <section id="pageForm">
-        <form action="#">
+        <form id="rform" name="rform" method="post">
             <label for="userName">Username:</label>
             <input type="text" name="userName" placeholder="Enter your Username" />
+            <span class="error" id="userName"></span>
 
             <label for="Password">Password:
             </label>
             <input type="password" name="password" placeholder="Enter your Password" />
+            <span class="error" id="password"></span>
 
             <label for="passwordVerify">Verify your Password:
             </label>
             <input type="password" name="passwordVerify" placeholder="Enter in your Password again" />
+            <span class="error" id="passwordVerify"></span>
 
             <label for="firstName">First Name:
             </label>
             <input type="text" name="firstName" placeholder="Enter your First Name" />
+            <span class="error" id="firstName"></span>
 
-            <label for="hostName">Last Name:
+            <label for="lastName">Last Name:
             </label>
             <input type="text" name="lastName" placeholder="Enter your Last Name" />
+            <span class="error" id="lastName"></span>
+
             <label for="email">Email:
             </label>
             <input type="text" name="email" placeholder="Enter your Email Address" />
+            <span class="error" id="email"></span>
+
 			<label for="phoneNumber">Phone Number
             </label>
-            <input type="text" name="lastName" placeholder="Enter your Phone Number" />
+            <input type="text" name="phoneNumber" placeholder="Enter your Phone Number" />
+            <span class="error" id="phoneNumber"></span>
+
 			<label for="signUpNewsletter">Sign up for newsletter:
             </label>
 			  <input type="radio" name="signUpNewsletter" value="Yes" checked> Yes 
 				<input type="radio" name="signUpNewsletter" value="No"> No
-            <input type="submit" value="Next step">
+            <input type="submit"  onclick="checkall()" value="Next step">
         </form>
     </section>
 
