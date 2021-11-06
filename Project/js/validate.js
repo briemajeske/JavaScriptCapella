@@ -137,7 +137,7 @@ const validateForm = (e) => {
         checkev++;
       }
 
-      if(checkev == (document.getElementById("rform").elements.length - 1)) {
+      if(checkev == 9) {
           handleSubmit();
       } else {
         setFocus();  
