@@ -1,6 +1,7 @@
 body {
     font: 15px arial, sans-serif;
     color: #808080;
+    padding-bottom: 40px;
 }
 input[type=text],
 select ,input[type=password],radio{
@@ -151,4 +152,13 @@ div.desc {
     font-size: 18pt;
     color: purple;
     text-decoration: underline;
+}
+
+.error {
+    display: block; 
+    color: red; 
+    font-size: 8pt; 
+    font-weight: bold;
+    margin-top: -5px;
+    margin-bottom: 5px;
 }
