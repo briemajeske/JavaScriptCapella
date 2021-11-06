@@ -28,7 +28,6 @@ const formSubmittedSuccess = (firstName) => {
     let msg = document.createTextNode(`Thanks for registering, ${firstName}!`);
     successMsg.append(msg);
     successMsg.setAttribute("class", "thankyou-message");
-    // myForm.appendChild(successMsg);
     myForm.prepend(successMsg);
     return false;
 }
@@ -142,12 +141,15 @@ const validateForm = (e) => {
           handleSubmit();
       } else {
         setFocus();  
+        return false;
       }
-      return false;
 }
 
 function setFocus() {
-    document.getElementsByClassName("invalid")[0].focus();
+    var els = document.getElementsByClassName("invalid");
+    if(els.length > 0) {
+      els[0].focus();
+    }
 }
 
 function setInvalid(name) {
