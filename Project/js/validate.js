@@ -5,47 +5,19 @@ window.addEventListener('load', function () {
   }
 });
 
-// after validation has passed submit -- this is for my host Netlify (doesn't support PHP)
+// after validation has passed submit
+// create a new url and collect the form data
+// add query string params to new url
+// navigate window to the new url
 const handleSubmit = () => {
-  
   let myForm = document.getElementById('rform');
   let formData = new FormData(myForm);
-  //let firstName = formData.get("firstName");
-  
-  const queryString = new URLSearchParams(formData).toString();
-  
-  newUrl = (new URL("confirm.html?", document.location)).href
-  //var newUrl = new URL("/confirm.html", base);
+  let queryString = new URLSearchParams(formData).toString();
+  let newUrl = (new URL("confirm.html?", document.location)).href;
   newUrl = newUrl + queryString;
   window.location.href = newUrl;
-
-  // fetch('/', {
-  //   method: 'POST',
-  //   headers: {
-  //     "Content-Type": "application/x-www-form-urlencoded"
-  //   },
-  //   body: new URLSearchParams(formData).toString()
-  // }).then((res) => {
-  //   console.log('Form successfully submitted')
-  //   console.log("response is", res);
-  //   formSubmittedSuccess(firstName);
-  //   return false;
-  // }).catch((error) =>
-  //   alert("There was a problem submitting your form"));
-
 }
 
-// if submission was successful add a thankyou message to the top of the form
-const formSubmittedSuccess = (firstName) => {
-  // let myForm = document.getElementById('rform');
-  // myForm.reset();
-  // let successMsg = document.createElement("p");
-  // let msg = document.createTextNode(`Thanks for registering, ${firstName}!`);
-  // successMsg.append(msg);
-  // successMsg.setAttribute("class", "thankyou-message");
-  // myForm.prepend(successMsg);
-  return false;
-}
 
 // Validate the form
 const validateForm = (e) => {
@@ -266,6 +238,7 @@ const getUrlParams = (val) => {
   return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
 
+// get the cookie values and set innerHTML value of the element
 const getPassedInParamsFromCookie = () => {
   var x = document.cookie;
   document.getElementById('node-id').innerHTML = x;
