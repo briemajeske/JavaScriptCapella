@@ -1,38 +1,49 @@
 // on load add listener for submit and call validateForm function
 window.addEventListener('load', function () {
-  document.querySelector("form").addEventListener("submit", validateForm);
+  if(document.querySelector("form")) {
+    document.querySelector("form").addEventListener("submit", validateForm);
+  }
 });
 
 // after validation has passed submit -- this is for my host Netlify (doesn't support PHP)
 const handleSubmit = () => {
+  
   let myForm = document.getElementById('rform');
   let formData = new FormData(myForm);
-  let firstName = formData.get("firstName");
+  //let firstName = formData.get("firstName");
+  
+  const queryString = new URLSearchParams(formData).toString();
+  
+  newUrl = (new URL("confirm.html?", document.location)).href
+  //var newUrl = new URL("/confirm.html", base);
+  newUrl = newUrl + queryString;
+  window.location.href = newUrl;
 
-  fetch('/', {
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: new URLSearchParams(formData).toString()
-  }).then((res) => {
-    console.log('Form successfully submitted')
-    console.log("response is", res);
-    formSubmittedSuccess(firstName);
-    return false;
-  }).catch((error) =>
-    alert("There was a problem submitting your form"));
+  // fetch('/', {
+  //   method: 'POST',
+  //   headers: {
+  //     "Content-Type": "application/x-www-form-urlencoded"
+  //   },
+  //   body: new URLSearchParams(formData).toString()
+  // }).then((res) => {
+  //   console.log('Form successfully submitted')
+  //   console.log("response is", res);
+  //   formSubmittedSuccess(firstName);
+  //   return false;
+  // }).catch((error) =>
+  //   alert("There was a problem submitting your form"));
+
 }
 
 // if submission was successful add a thankyou message to the top of the form
 const formSubmittedSuccess = (firstName) => {
-  let myForm = document.getElementById('rform');
-  myForm.reset();
-  let successMsg = document.createElement("p");
-  let msg = document.createTextNode(`Thanks for registering, ${firstName}!`);
-  successMsg.append(msg);
-  successMsg.setAttribute("class", "thankyou-message");
-  myForm.prepend(successMsg);
+  // let myForm = document.getElementById('rform');
+  // myForm.reset();
+  // let successMsg = document.createElement("p");
+  // let msg = document.createTextNode(`Thanks for registering, ${firstName}!`);
+  // successMsg.append(msg);
+  // successMsg.setAttribute("class", "thankyou-message");
+  // myForm.prepend(successMsg);
   return false;
 }
 
@@ -181,6 +192,7 @@ const validateForm = (e) => {
     setFocus();
     return false;
   }
+
 }
 // sets the focus on the first element in the html collection with an invalid class
 const setFocus = () => {
@@ -219,4 +231,42 @@ function validateEmail(email) {
 function validatePhoneNumber(phoneNumber) {
   const re = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
   return re.test(phoneNumber);
+}
+
+const getPassedInParams = () => {
+      //Store values passed from form 1 into variables
+      var userName = getUrlParams('userName');
+      var password = getUrlParams('password');
+      var passwordVerify = getUrlParams('passwordVerify');
+      var firstName = getUrlParams('firstName');
+      var lastName = getUrlParams('lastName');
+      var email = getUrlParams('email');
+      var phoneNumber = getUrlParams('phoneNumber');
+      var signUpNewsletter = getUrlParams('signUpNewsletter');
+
+      // Create Cookies
+      document.cookie = "userName=" + userName + ";";
+      document.cookie = "password=" + password + ";";
+      document.cookie = "passwordVerify=" + passwordVerify + ";";
+      document.cookie = "firstName=" + firstName + ";";
+      document.cookie = "lastName=" + lastName + ";";
+      document.cookie = "email=" + email + ";";
+      document.cookie = "phoneNumber=" + phoneNumber + ";";
+      document.cookie = "signUpNewsletter=" + signUpNewsletter + ";";
+
+      getPassedInParamsFromCookie();
+}
+
+//  parse data from url with regex
+//  returns empty string or decoded value
+const getUrlParams = (val) => {
+  val = val.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  var regex = new RegExp('[\\?&]' + val + '=([^&#]*)');
+  var results = regex.exec(location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+const getPassedInParamsFromCookie = () => {
+  var x = document.cookie;
+  document.getElementById('node-id').innerHTML = x;
 }
